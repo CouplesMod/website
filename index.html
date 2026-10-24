@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Couples Mod – Romance for Minecraft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff5f8;--bg2:#ffe3ed;--card:#fff;--ink:#4a2433;--muted:#8a5a6c;--pink:#ff8fb1;--deep:#d63f7c;--line:#ffd3e1;--b1:#ffb7cd;--b2:#ff9fbf;--b3:#ffd6e3;--trunk:#7a4a3a;--ground:#ffd9e6;--hdr:rgba(255,245,248,.88);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1219;--bg2:#2a1824;--card:#2b1a24;--ink:#ffe6ee;--muted:#d4a5b8;--line:#4a2a3a;--b1:#e87fa3;--b2:#d9628c;--b3:#f4a8c3;--trunk:#8a5a48;--ground:#3a2230;--hdr:rgba(30,18,25,.88)}}
+:root[data-theme="dark"]{--bg:#1e1219;--bg2:#2a1824;--card:#2b1a24;--ink:#ffe6ee;--muted:#d4a5b8;--line:#4a2a3a;--b1:#e87fa3;--b2:#d9628c;--b3:#f4a8c3;--trunk:#8a5a48;--ground:#3a2230;--hdr:rgba(30,18,25,.88)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Quicksand",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hdr);z-index:10}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--hdr);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.brand{font-family:"Pacifico",cursive;font-size:1.25rem;color:var(--deep);text-decoration:none;margin-right:auto;white-space:nowrap}
+nav{display:flex;gap:18px}
+nav a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--muted)}
+nav a:hover{color:var(--deep)}
+.lang{display:flex;background:var(--bg2);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;font:700 .8rem "Quicksand",sans-serif;color:var(--muted);padding:5px 11px;border-radius:99px;cursor:pointer}
+.lang button.on{background:var(--deep);color:#fff}
+.hero{position:relative;background:linear-gradient(180deg,var(--bg2),var(--bg));padding:48px 0 30px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:center;position:relative;z-index:1}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--deep);font-weight:700;font-size:.8rem;padding:5px 14px;border-radius:99px}
+h1{font-family:"Pacifico",cursive;font-weight:400;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.15;margin:14px 0 10px;color:var(--deep)}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:480px;margin:0 0 22px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;padding:13px 26px;border-radius:99px;border:2px solid var(--deep);color:var(--deep);background:var(--card);transition:transform .2s,box-shadow .2s}
+.btn.main{background:linear-gradient(135deg,#ec5b92,#d63f7c);color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(214,63,124,.35)}
+.btn:hover{transform:translateY(-3px)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;font-size:.82rem;color:var(--muted);font-weight:600}
+.badges span{background:var(--card);border:1px solid var(--line);padding:3px 12px;border-radius:99px}
+.tree{width:100%;height:auto;max-height:440px}
+.sway{transform-origin:50% 90%;animation:sway 7s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(1.2deg)}}
+.heart{animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.petal{position:fixed;top:-24px;width:12px;height:12px;background:linear-gradient(135deg,var(--b3),var(--b2));border-radius:150% 0 150% 0;opacity:.8;pointer-events:none;z-index:2;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(720deg)}}
+section{padding:60px 0}
+section.alt{background:var(--bg2)}
+h2{font-family:"Pacifico",cursive;font-weight:400;font-size:2rem;color:var(--deep);text-align:center;margin:0 0 6px}
+.sub{text-align:center;color:var(--muted);margin:0 auto 32px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(255,143,177,.25)}
+.card .ic{font-size:2rem}
+.card h3{margin:6px 0 4px;font-size:1.1rem;color:var(--deep)}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.step{position:relative;padding-top:34px}
+.step .n{position:absolute;top:-16px;left:20px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ec5b92,#d63f7c);color:#fff;font-weight:700;display:grid;place-items:center;box-shadow:0 4px 12px rgba(214,63,124,.4)}
+.dl .card{text-align:center}
+.dl .btn{margin-top:14px;padding:11px 22px}
+.note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:22px}
+ol.inst{max-width:620px;margin:0 auto;padding-left:22px;color:var(--muted)}
+ol.inst li{margin:8px 0}
+footer{text-align:center;padding:36px 20px;color:var(--muted);border-top:1px solid var(--line);font-size:.92rem}
+footer a{color:var(--deep);font-weight:700}
+.slider{position:relative;max-width:900px;margin:0 auto;border-radius:26px;overflow:hidden;border:4px solid var(--card);box-shadow:0 18px 40px rgba(255,143,177,.3);background:var(--card);outline:0}
+.track{display:flex;transition:transform .6s cubic-bezier(.6,.05,.25,1)}
+.slide{flex:0 0 100%;aspect-ratio:16/9;display:grid;place-items:center;background:var(--bg2)}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.missing img{display:none}
+.slide.missing::after{content:"🌸 " attr(data-p);color:var(--muted);font-weight:700}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:var(--deep);font-size:1.5rem;line-height:1;cursor:pointer;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.arrow:hover{background:#fff}.prev{left:12px}.next{right:12px}
+.cnt{position:absolute;right:14px;bottom:12px;background:rgba(0,0,0,.45);color:#fff;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:99px;z-index:2}
+.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:var(--line);padding:0;cursor:pointer;transition:transform .2s}
+.dots button.on{background:var(--deep);transform:scale(1.4)}
+.modal{position:fixed;inset:0;background:rgba(74,36,51,.5);backdrop-filter:blur(4px);display:none;place-items:center;z-index:50;padding:20px}
+.modal.open{display:grid}
+.pop{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:32px 28px;max-width:360px;text-align:center;animation:pop .35s}
+@keyframes pop{from{transform:scale(.8);opacity:0}}
+.pop .big{font-size:3rem}
+.pop h3{font-family:"Pacifico",cursive;font-weight:400;font-size:1.6rem;color:var(--deep);margin:6px 0}
+.pop p{color:var(--muted);margin:0 0 18px}
+@media(max-width:780px){.arrow{width:36px;height:36px}.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.btns,.badges{justify-content:center}nav{display:none}.tree{max-height:300px}}
+@media(prefers-reduced-motion:reduce){.petal{display:none}.sway,.heart{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top">🌸 Couples Mod</a>
+  <nav><a href="#features" data-t="n1"></a><a href="#how" data-t="n2"></a><a href="#items" data-t="n3"></a><a href="#download" data-t="n4"></a></nav>
+  <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="fr">FR</button><button data-l="de">DE</button></div>
+</div></header>
+
+<div class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="tag" data-t="tag"></span>
+    <h1>Couples Mod</h1>
+    <p data-t="sub"></p>
+    <div class="btns">
+      <a class="btn main" href="#download">⬇ <span data-t="dl"></span></a>
+      <a class="btn" href="#" data-soon>🔥 CurseForge</a>
+    </div>
+    <div class="badges"><span>1.21.1 · 1.20.1</span><span>NeoForge · Fabric · Forge</span><span>Client &amp; Server</span></div>
+  </div>
+  <svg class="tree" viewBox="0 0 520 440" role="img" aria-label="Sakura tree">
+    <ellipse cx="260" cy="420" rx="210" ry="14" fill="var(--ground)"/>
+    <path d="M246 424C244 370 238 322 254 272C260 244 250 214 232 184L252 178C266 206 278 232 278 264C282 304 288 354 296 424Z" fill="var(--trunk)"/>
+    <g stroke="var(--trunk)" stroke-width="10" fill="none" stroke-linecap="round">
+      <path d="M258 270C300 244 340 222 392 198"/><path d="M246 232C204 212 160 194 112 182"/><path d="M246 204C250 164 262 134 272 100"/><path d="M262 240C284 190 320 160 336 130"/>
+    </g>
+    <g class="sway">
+      <circle cx="110" cy="170" r="52" fill="var(--b1)"/><circle cx="150" cy="140" r="46" fill="var(--b3)"/><circle cx="85" cy="205" r="38" fill="var(--b2)"/>
+      <circle cx="270" cy="88" r="58" fill="var(--b2)"/><circle cx="215" cy="112" r="48" fill="var(--b1)"/><circle cx="325" cy="110" r="50" fill="var(--b3)"/>
+      <circle cx="395" cy="185" r="54" fill="var(--b1)"/><circle cx="440" cy="215" r="40" fill="var(--b3)"/><circle cx="350" cy="150" r="42" fill="var(--b2)"/>
+      <circle cx="190" cy="165" r="44" fill="var(--b3)"/><circle cx="300" cy="165" r="40" fill="var(--b1)"/>
+    </g>
+    <g class="heart" fill="#e8497f"><path d="M72 96c-8-10-22 2-12 12l12 11 12-11c10-10-4-22-12-12z"/></g>
+    <g class="heart" fill="#ff7aa8" style="animation-delay:1.5s"><path d="M452 120c-6-8-17 1-9 9l9 9 9-9c8-8-3-17-9-9z"/></g>
+  </svg>
+</div></div>
+
+<section class="alt" id="gallery"><div class="wrap"><h2 data-t="gT"></h2><p class="sub" data-t="gS"></p>
+  <div class="slider" id="slider" tabindex="0" aria-roledescription="carousel">
+    <div class="track" id="track"></div>
+    <button class="arrow prev" id="prev" aria-label="Previous">‹</button><button class="arrow next" id="next" aria-label="Next">›</button>
+    <span class="cnt" id="cnt"></span>
+  </div>
+  <div class="dots" id="dots"></div>
+</div></section>
+
+<section id="features"><div class="wrap"><h2 data-t="fT"></h2><p class="sub" data-t="fS"></p><div class="grid" id="fG"></div></div></section>
+<section class="alt" id="how"><div class="wrap"><h2 data-t="hT"></h2><p class="sub" data-t="hS"></p><div class="grid" id="sG" style="padding-top:12px"></div></div></section>
+<section id="perks"><div class="wrap"><h2 data-t="pT"></h2><p class="sub"></p><div class="grid" id="pG"></div></div></section>
+<section class="alt" id="items"><div class="wrap"><h2 data-t="iT"></h2><p class="sub"></p><div class="grid" id="iG"></div></div></section>
+
+<section class="dl" id="download"><div class="wrap">
+  <h2 data-t="dT"></h2><p class="sub" data-t="dS"></p>
+  <div class="grid" id="dG"></div>
+  <p class="note" data-t="dN"></p>
+</div></section>
+
+<section class="alt"><div class="wrap"><h2 data-t="inT"></h2><p class="sub"></p><ol class="inst" id="inst"></ol></div></section>
+
+<footer>
+  <p data-t="cr"></p>
+  <p><a href="#" data-soon>CurseForge</a> · <a href="https://discord.com/invite/UkyJzSUw5x" target="_blank" rel="noopener">Discord</a> · <a id="gh" href="#" target="_blank" rel="noopener">GitHub</a></p>
+  <p>🌸 © 2026 Couples Mod</p>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="pop"><div class="big">🌸</div><h3 data-t="soonT"></h3><p data-t="soon"></p><button class="btn main" id="mc" data-t="ok"></button></div></div>
+
+<script>
+/* ====== EDIT HERE: your GitHub links ====== */
+const GITHUB_REPO = "https://github.com/YOUR_USERNAME/YOUR_REPO";
+const DOWNLOADS = [
+  {name:"NeoForge", mc:"1.21.1", ver:"1.0.3", url:"https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0.3/couplesmod-1.0.3-neoforge.jar"},
+  {name:"Fabric",   mc:"1.21.1", ver:"1.0.3", url:"https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0.3/couplesmod-1.0.3-fabric.jar"},
+  {name:"Forge",    mc:"1.20.1", ver:"1.0.4", url:"https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0.4/couplesmod-1.0.4-forge.jar"}
+];
+/* ========================================= */
+
+const T = {
+en:{n1:"Features",n2:"How it works",n3:"Items",n4:"Download",tag:"🌸 Minecraft Multiplayer Mod",
+sub:"Bring romance to your server! Date other players with a bouquet, grow your love through kisses and gifts, and marry at level 10 for permanent buffs.",
+dl:"Download",gT:"Gallery",gS:"A peek at love in the blocky world.",soonT:"Coming soon",soon:"The CurseForge link will be added soon.",ok:"OK",fT:"Features",fS:"Meaningful relationships and shared progress for your multiplayer world.",
+f:[["💐","Dating & Marriage","Start with a bouquet, then propose with an engagement ring."],["💋","Kisses & XP","Kiss your partner to earn relationship XP and level up."],["✨","Shared Progress","Unlock unique perks and buffs when you’re near your partner."],["📓","Relationship Screen","Press G to see status, partner, level and shared stats."],["🏆","Advancements","Custom advancements for every relationship milestone."],["💗","Heart Effects","Heart particles and sounds make every moment special."]],
+hT:"How it works",hS:"From first flower to wedding ring in four sweet steps.",
+s:[["Ask them out","Right-click a player while holding a Bouquet. They accept with Shift + Right-Click and an empty hand."],["Kiss & level up","Shift + Right-Click your partner with an empty hand to gain XP. A short cooldown prevents spam."],["Send gifts","Hold an item, press G and click “Send Gift”. The first gift each day gives big XP, and gifted food gives bonus saturation."],["Get married","At level 10, right-click your partner with an Engagement Ring. They accept with Shift + Right-Click."]],
+pT:"Perks & Buffs",
+p:[["🌙","Sweet Dreams","Sleep within 10 blocks of your partner and both get Saturation and Regeneration for 10 minutes."],["💍","Power of Love","Married couples within 32 blocks get Haste II, Regeneration I, Speed I, Health Boost II and Luck I."],["⚙️","Fully Configurable","Edit or disable every effect: config/couplesmod-common.toml (NeoForge) or MidnightLib + ModMenu (Fabric)."]],
+iT:"Items & Controls",
+i:[["💐","15 Bouquets","Allium, Cornflower, Lilac, Tulips, Rose Bush, Sunflower, Wither Rose and more. Craft with 9 flowers."],["💍","4 Engagement Rings","Iron, Gold, Diamond and Emerald. They unlock marriage and shared buffs."],["📓","Anniversary Journal","Granted when you start dating. Tracks level, days together, kisses and gifts."],["⌨️","Controls","Press G (default) to open the Relationship Screen."]],
+dT:"Download",dS:"Choose the version for your loader and Minecraft version.",dB:"Download .jar",
+dN:"Made for multiplayer: install it on the server and on every client. Free to use in modpacks, credit appreciated.",
+inT:"Installation",inst:["Install the right loader: NeoForge or Fabric for 1.21.1, Forge for 1.20.1.","Download the matching .jar file above.","Drop the .jar into your Minecraft mods folder.","Launch the game and fall in love! 💕"],
+cr:"Made with 💖 by Linceros · Designs and textures by Iara"},
+fr:{n1:"Fonctionnalités",n2:"Comment ça marche",n3:"Objets",n4:"Télécharger",tag:"🌸 Mod multijoueur Minecraft",
+sub:"Apportez de la romance à votre serveur ! Sortez avec d’autres joueurs grâce à un bouquet, faites grandir votre amour avec des baisers et des cadeaux, et mariez-vous au niveau 10 pour des bonus permanents.",
+dl:"Télécharger",gT:"Galerie",gS:"Un aperçu de l’amour dans le monde de blocs.",soonT:"Bientôt disponible",soon:"Le lien CurseForge sera ajouté bientôt.",ok:"OK",fT:"Fonctionnalités",fS:"Des relations riches de sens et une progression partagée dans votre monde multijoueur.",
+f:[["💐","Rencontres & mariage","Commencez avec un bouquet, puis demandez en mariage avec une bague de fiançailles."],["💋","Baisers & XP","Embrassez votre partenaire pour gagner de l’XP de couple et monter de niveau."],["✨","Progression partagée","Débloquez des avantages et bonus uniques quand vous êtes près de votre partenaire."],["📓","Écran de couple","Appuyez sur G pour voir le statut, le partenaire, le niveau et vos statistiques."],["🏆","Progrès","Des progrès personnalisés pour chaque étape de votre relation."],["💗","Effets de cœur","Particules de cœur et sons pour rendre chaque moment spécial."]],
+hT:"Comment ça marche",hS:"De la première fleur à la bague de mariage en quatre étapes.",
+s:[["Faire sa déclaration","Clic droit sur un joueur avec un bouquet en main. Il accepte avec Maj + clic droit, main vide."],["Embrasser & progresser","Maj + clic droit sur votre partenaire, main vide, pour gagner de l’XP. Un court délai évite le spam."],["Offrir des cadeaux","Tenez un objet, appuyez sur G et cliquez sur « Envoyer un cadeau ». Le premier cadeau du jour donne beaucoup d’XP, et la nourriture offerte donne plus de saturation."],["Se marier","Au niveau 10, faites un clic droit sur votre partenaire avec une bague de fiançailles. Il accepte avec Maj + clic droit."]],
+pT:"Avantages & bonus",
+p:[["🌙","Doux rêves","Dormez à moins de 10 blocs de votre partenaire : Saturation et Régénération pendant 10 minutes pour vous deux."],["💍","Pouvoir de l’amour","Les couples mariés à moins de 32 blocs reçoivent Hâte II, Régénération I, Vitesse I, Santé accrue II et Chance I."],["⚙️","Entièrement configurable","Modifiez ou désactivez chaque effet : config/couplesmod-common.toml (NeoForge) ou MidnightLib + ModMenu (Fabric)."]],
+iT:"Objets & commandes",
+i:[["💐","15 bouquets","Allium, bleuet, lilas, tulipes, rosier, tournesol, rose de Wither et plus. Se fabrique avec 9 fleurs."],["💍","4 bagues de fiançailles","Fer, or, diamant et émeraude. Elles débloquent le mariage et les bonus partagés."],["📓","Journal d’anniversaire","Offert au début de la relation. Suit le niveau, les jours ensemble, les baisers et les cadeaux."],["⌨️","Commandes","Appuyez sur G (par défaut) pour ouvrir l’écran de couple."]],
+dT:"Télécharger",dS:"Choisissez la version adaptée à votre loader et à votre version de Minecraft.",dB:"Télécharger le .jar",
+dN:"Conçu pour le multijoueur : installez-le sur le serveur et chez chaque joueur. Utilisable librement dans les modpacks, un crédit est apprécié.",
+inT:"Installation",inst:["Installez le bon loader : NeoForge ou Fabric pour la 1.21.1, Forge pour la 1.20.1.","Téléchargez le fichier .jar correspondant ci-dessus.","Placez le .jar dans le dossier mods de Minecraft.","Lancez le jeu et tombez amoureux ! 💕"],
+cr:"Créé avec 💖 par Linceros · Designs et textures par Iara"},
+de:{n1:"Features",n2:"So funktioniert’s",n3:"Items",n4:"Download",tag:"🌸 Minecraft-Multiplayer-Mod",
+sub:"Bring Romantik auf deinen Server! Werde mit anderen Spielern ein Paar, lass eure Liebe durch Küsse und Geschenke wachsen und heirate auf Level 10 für dauerhafte Boni.",
+dl:"Herunterladen",gT:"Galerie",gS:"Ein Blick auf die Liebe in der Blockwelt.",soonT:"Bald verfügbar",soon:"Der CurseForge-Link wird bald hinzugefügt.",ok:"OK",fT:"Features",fS:"Bedeutungsvolle Beziehungen und gemeinsamer Fortschritt für deine Multiplayer-Welt.",
+f:[["💐","Dating & Heirat","Starte mit einem Blumenstrauß und mache später mit einem Verlobungsring einen Antrag."],["💋","Küsse & XP","Küsse deinen Partner, um Beziehungs-XP zu sammeln und aufzusteigen."],["✨","Gemeinsamer Fortschritt","Schalte einzigartige Vorteile und Buffs frei, wenn du in der Nähe deines Partners bist."],["📓","Beziehungsbildschirm","Drücke G für Status, Partner, Level und gemeinsame Statistiken."],["🏆","Erfolge","Eigene Erfolge für jeden Meilenstein eurer Beziehung."],["💗","Herz-Effekte","Herzpartikel und Sounds machen jeden Moment besonders."]],
+hT:"So funktioniert’s",hS:"Von der ersten Blume bis zum Ehering in vier süßen Schritten.",
+s:[["Um ein Date bitten","Rechtsklick auf einen Spieler mit einem Blumenstrauß in der Hand. Er nimmt mit Shift + Rechtsklick und leerer Hand an."],["Küssen & aufsteigen","Shift + Rechtsklick auf deinen Partner mit leerer Hand gibt XP. Eine kurze Abklingzeit verhindert Spam."],["Geschenke senden","Halte einen Gegenstand, drücke G und klicke auf „Geschenk senden“. Das erste Geschenk des Tages gibt viel XP, geschenktes Essen sättigt zusätzlich."],["Heiraten","Auf Level 10 machst du per Rechtsklick mit einem Verlobungsring den Antrag. Dein Partner nimmt mit Shift + Rechtsklick an."]],
+pT:"Vorteile & Buffs",
+p:[["🌙","Süße Träume","Schlaft ihr im Umkreis von 10 Blöcken, erhaltet ihr beide 10 Minuten lang Sättigung und Regeneration."],["💍","Macht der Liebe","Verheiratete Paare im Umkreis von 32 Blöcken erhalten Eile II, Regeneration I, Geschwindigkeit I, Heilungsboost II und Glück I."],["⚙️","Voll konfigurierbar","Bearbeite oder deaktiviere jeden Effekt: config/couplesmod-common.toml (NeoForge) oder MidnightLib + ModMenu (Fabric)."]],
+iT:"Items & Steuerung",
+i:[["💐","15 Blumensträuße","Zierlauch, Kornblume, Flieder, Tulpen, Rosenbusch, Sonnenblume, Wither-Rose und mehr. Herstellung mit 9 Blumen."],["💍","4 Verlobungsringe","Eisen, Gold, Diamant und Smaragd. Sie schalten Heirat und gemeinsame Buffs frei."],["📓","Jahrestagsbuch","Erhältst du, sobald ihr zusammenkommt. Zeigt Level, gemeinsame Tage, Küsse und Geschenke."],["⌨️","Steuerung","Drücke G (Standard), um den Beziehungsbildschirm zu öffnen."]],
+dT:"Download",dS:"Wähle die Version für deinen Loader und deine Minecraft-Version.",dB:".jar herunterladen",
+dN:"Für Multiplayer gemacht: auf dem Server und bei jedem Spieler installieren. Frei in Modpacks nutzbar, eine Namensnennung wird geschätzt.",
+inT:"Installation",inst:["Installiere den passenden Loader: NeoForge oder Fabric für 1.21.1, Forge für 1.20.1.","Lade die passende .jar-Datei oben herunter.","Lege die .jar in deinen Minecraft-mods-Ordner.","Starte das Spiel und verliebe dich! 💕"],
+cr:"Mit 💖 gemacht von Linceros · Designs und Texturen von Iara"}
+};
+
+const card=(e,t,p,x="")=>`<div class="card ${x}"><div class="ic">${e}</div><h3>${t}</h3><p>${p}</p></div>`;
+function render(l){
+  const d=T[l];
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-t]").forEach(el=>{el.textContent=d[el.dataset.t]||""});
+  document.getElementById("fG").innerHTML=d.f.map(a=>card(...a)).join("");
+  document.getElementById("sG").innerHTML=d.s.map((a,n)=>`<div class="card step"><div class="n">${n+1}</div><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join("");
+  document.getElementById("pG").innerHTML=d.p.map(a=>card(...a)).join("");
+  document.getElementById("iG").innerHTML=d.i.map(a=>card(...a)).join("");
+  document.getElementById("dG").innerHTML=DOWNLOADS.map(x=>`<div class="card"><div class="ic">🌸</div><h3>${x.name}</h3><p>Minecraft ${x.mc} · v${x.ver}</p><a class="btn main" href="${x.url}" download>⬇ ${d.dB}</a></div>`).join("");
+  document.getElementById("inst").innerHTML=d.inst.map(s=>`<li>${s}</li>`).join("");
+  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
+  document.title="Couples Mod – "+d.tag.replace("🌸 ","");
+  try{localStorage.setItem("cm-lang",l)}catch(e){}
+}
+document.getElementById("gh").href=GITHUB_REPO;
+document.getElementById("lang").addEventListener("click",e=>{const l=e.target.dataset.l;if(l)render(l)});
+let start="en";
+try{start=localStorage.getItem("cm-lang")||""}catch(e){}
+if(!T[start]){const n=(navigator.language||"en").slice(0,2);start=T[n]?n:"en"}
+render(start);
+
+/* image slider: img/1.png ... img/12.png */
+(function(){
+  const N=12,sl=document.getElementById("slider"),tr=document.getElementById("track"),dots=document.getElementById("dots"),cnt=document.getElementById("cnt");
+  let i=0,timer,x0=null;
+  function go(n){i=(n+N)%N;tr.style.transform=`translateX(-${i*100}%)`;[...dots.children].forEach((d,k)=>d.classList.toggle("on",k===i));cnt.textContent=(i+1)+" / "+N}
+  function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion:reduce)").matches)timer=setInterval(()=>go(i+1),5000)}
+  for(let n=1;n<=N;n++){
+    tr.insertAdjacentHTML("beforeend",`<div class="slide" data-p="img/${n}.png"><img src="img/${n}.png" alt="Couples Mod screenshot ${n}" loading="${n<3?"eager":"lazy"}"></div>`);
+    const b=document.createElement("button");b.setAttribute("aria-label","Image "+n);b.onclick=()=>{go(n-1);auto()};dots.appendChild(b);
+  }
+  tr.querySelectorAll("img").forEach(im=>im.addEventListener("error",()=>im.parentNode.classList.add("missing")));
+  document.getElementById("prev").onclick=()=>{go(i-1);auto()};
+  document.getElementById("next").onclick=()=>{go(i+1);auto()};
+  sl.addEventListener("mouseenter",()=>clearInterval(timer));sl.addEventListener("mouseleave",auto);
+  sl.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){go(i-1);auto()}if(e.key==="ArrowRight"){go(i+1);auto()}});
+  sl.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+  sl.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));auto()}x0=null});
+  go(0);auto();
+})();
+
+/* “coming soon” popup for CurseForge links */
+(function(){
+  const m=document.getElementById("modal");
+  document.querySelectorAll("[data-soon]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();m.classList.add("open")}));
+  m.addEventListener("click",e=>{if(e.target===m||e.target.id==="mc")m.classList.remove("open")});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open")});
+})();
+
+/* falling sakura petals */
+for(let i=0;i<22;i++){
+  const p=document.createElement("div");p.className="petal";
+  const s=8+Math.random()*10;
+  p.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s}px;animation-duration:${9+Math.random()*10}s;animation-delay:${-Math.random()*18}s;--dx:${(Math.random()*160-80)}px`;
+  document.body.appendChild(p);
+}
+</script>
+</body>
+</html>
