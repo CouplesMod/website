@@ -235,7 +235,7 @@ render(start);
   function go(n){i=(n+N)%N;tr.style.transform=`translateX(-${i*100}%)`;[...dots.children].forEach((d,k)=>d.classList.toggle("on",k===i));cnt.textContent=(i+1)+" / "+N}
   function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion:reduce)").matches)timer=setInterval(()=>go(i+1),5000)}
   for(let n=1;n<=N;n++){
-    tr.insertAdjacentHTML("beforeend",`<div class="slide" data-p="img/${n}.png"><img src="img/${n}.png" alt="Couples Mod screenshot ${n}" loading="${n<3?"eager":"lazy"}"></div>`);
+    tr.insertAdjacentHTML("beforeend",`<div class="slide" data-p="${n}.png"><img src="${n}.png" alt="Couples Mod screenshot ${n}" loading="${n<3?"eager":"lazy"}"></div>`);
     const b=document.createElement("button");b.setAttribute("aria-label","Image "+n);b.onclick=()=>{go(n-1);auto()};dots.appendChild(b);
   }
   tr.querySelectorAll("img").forEach(im=>im.addEventListener("error",()=>im.parentNode.classList.add("missing")));
